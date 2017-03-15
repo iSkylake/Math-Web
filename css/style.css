@@ -1,4 +1,4 @@
-body{
+*{
 	margin: 0;
 	padding: 0;
 }
@@ -13,17 +13,23 @@ li{
 	background-color: #000;
 	color: #fff;
 	justify-content: space-around;
+	font-weight: bold;
+	border-top: solid 5px #ff28b9;
 }
 
 #brand{
-	padding: 10px;
-	margin: 0;
+	padding: 15px;
 }
 
 nav div ul{
 	display: flex;
+	margin: 0;
 }
 
 nav div ul li{
-	padding: 10px;
+	padding: 15px;
+}
+
+nav div ul li:hover{
+	background-color: #ff28b9;
 }
