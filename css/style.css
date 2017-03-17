@@ -12,6 +12,10 @@ li{
 	list-style-type: none;
 }
 
+button:focus{
+	outline: none;
+}
+
 .navbar{
 	display: flex;
 	width: 100%;
@@ -58,17 +62,23 @@ nav div ul li:hover{
 	margin: 25px;
 }
 
-#answer-container{
+#option-container{
 	display: flex;
 	justify-content: center;
 	width: 100%;
 }
 
-.answer{
+.option{
 	border: 5px solid #ff28b9;
 	border-radius: 10px;
 	font-size: 100px;
 	padding: 25px 50px;
 	background-color: #000;
 	margin: 25px;
+	color: #ff28b9;
+
+}
+
+.wrong{
+	pointer-events: none;
 }
