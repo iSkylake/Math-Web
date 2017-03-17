@@ -4,8 +4,11 @@ var opType = document.getElementById('op-type');
 var option = document.getElementsByClassName('option');
 
 function verify(answer){
-	if(answer !== parseInt(op1.innerHTML) + parseInt(op2.innerHTML)){
-		
+	console.log(answer.innerHTML);
+	if(parseInt(answer.innerHTML) !== parseInt(op1.innerHTML) + parseInt(op2.innerHTML)){
+		answer.className += " wrong";
+	} else {
+		answer.className += " right";
 	}
 }
 
@@ -35,7 +38,7 @@ function reset(){
 
 for(i=0; i<option.length; i++){
 	option[i].addEventListener("click", function(){
-		verify(this.innerHTML);
+		verify(this);
 	});
 }
 

@@ -81,4 +81,11 @@ nav div ul li:hover{
 
 .wrong{
 	pointer-events: none;
+	border-color: red;
+	color: red;
+}
+
+.right{
+	border-color: green;
+	color: green;
 }
