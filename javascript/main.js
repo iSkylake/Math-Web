@@ -17,6 +17,10 @@ function reset(){
 	op2.innerHTML = Math.floor(Math.random()*10);
 	var options = [];
 
+	for(i=0; i<4; i++){
+		option[i].classList.remove('wrong', 'right');
+	}
+
 	var rightAnswer = parseInt(op1.innerHTML) + parseInt(op2.innerHTML);
 
 	options.push(rightAnswer);
