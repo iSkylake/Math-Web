@@ -2,13 +2,24 @@ var op1 = document.getElementById('op1');
 var op2 = document.getElementById('op2');
 var opType = document.getElementById('op-type');
 var option = document.getElementsByClassName('option');
+var replay = document.getElementById('replay');
+
+var operations = {
+	'+': function(x, y){ return x + y }
+};
 
 function verify(answer){
-	console.log(answer.innerHTML);
-	if(parseInt(answer.innerHTML) !== parseInt(op1.innerHTML) + parseInt(op2.innerHTML)){
+	var correct = operations[opType.innerHTML](parseInt(op1.innerHTML), parseInt(op2.innerHTML))
+	if(parseInt(answer.innerHTML) !== correct){
 		answer.className += " wrong";
 	} else {
 		answer.className += " right";
+		for(i=0; i<4; i++){
+			if(parseInt(option[i].innerHTML) !== correct){
+				option[i].className += " hidden";
+			}
+		}
+		replay.classList.remove('hidden');
 	}
 }
 
@@ -18,17 +29,19 @@ function reset(){
 	var options = [];
 
 	for(i=0; i<4; i++){
-		option[i].classList.remove('wrong', 'right');
+		option[i].classList.remove('wrong', 'right', 'hidden');
 	}
+
+	replay.className = 'hidden';
 
 	var rightAnswer = parseInt(op1.innerHTML) + parseInt(op2.innerHTML);
 
 	options.push(rightAnswer);
 
 	for(i=0; i<3; i++){
-		var genNum = Math.floor(Math.random()*10);
+		var genNum = Math.floor(Math.random()*21);
 		while(options.includes(genNum)){
-			genNum = Math.floor(Math.random()*10);
+			genNum = Math.floor(Math.random()*21);
 		}
 		options.push(genNum);
 	}
@@ -46,4 +59,6 @@ for(i=0; i<option.length; i++){
 	});
 }
 
-// verify();
+replay.addEventListener("click", function(){
+	reset();
+});
