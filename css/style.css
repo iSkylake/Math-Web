@@ -37,6 +37,8 @@ nav div ul{
 
 nav div ul li{
 	padding: 15px;
+	user-select: none;
+	cursor: default;
 }
 
 nav div ul li:hover{
@@ -99,6 +101,7 @@ nav div ul li:hover{
 .right{
 	border-color: green;
 	color: green;
+	pointer-events: none;
 }
 
 .hidden{
