@@ -6,19 +6,22 @@ var replay = document.getElementById('replay');
 
 var operations = {
 	'+': function(x, y){ return x + y },
-	'X': function(x, y){ return x * y},
-	'-': function(x, y){ return x - y}
+	'X': function(x, y){ return x * y },
+	'-': function(x, y){ return x - y },
+	'/': function(x, y){ return x / y }
 };
 
 var genOp = {
 	'+X': function(){ return Math.floor(Math.random()*10) },
-	'-': function(){ var arr = []; arr[0] = Math.floor(Math.random()*98)+1; arr[1] = Math.floor(Math.random()*arr[0]); return arr }
+	'-': function(){ var arr = []; arr[0] = Math.floor(Math.random()*98)+1; arr[1] = Math.floor(Math.random()*arr[0]); return arr },
+	'/': function(){ var arr = []; arr[0] = Math.floor(Math.random()*98)+1; arr[1] = Math.floor(Math.random()*arr[0]); while(arr[0] % arr[1] !== 0){ arr[1] = Math.floor(Math.random()*arr[0]); } return arr }
 };
 
 var genOption = {
 	'+': function(){ return Math.floor(Math.random()*21) },
 	'X': function(){ return Math.floor(Math.random()*82) },
-	'-': function(){ return Math.floor(Math.random()*100)}
+	'-': function(){ return Math.floor(Math.random()*100)},
+	'/': function(){ return Math.floor(Math.random()*100)}
 };
 
 function verify(answer){
@@ -47,6 +50,10 @@ function reset(symbol){
 		var arr = genOp['-']();
 		operator1 = arr[0];
 		operator2 = arr[1];
+	} else{
+		var arr = genOp['/']();
+		operator1 = arr[0];
+		operator2 = arr[1];		
 	}
 
 
