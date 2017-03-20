@@ -5,7 +5,18 @@ var option = document.getElementsByClassName('option');
 var replay = document.getElementById('replay');
 
 var operations = {
-	'+': function(x, y){ return x + y }
+	'+': function(x, y){ return x + y },
+	'X': function(x, y){ return x * y}
+};
+
+var genOp = {
+	'+': function(){ return Math.floor(Math.random()*10) },
+	'X': function(){ return Math.floor(Math.random()*10) }
+};
+
+var genOption = {
+	'+': function(){ return Math.floor(Math.random()*21) },
+	'X': function(){ return Math.floor(Math.random()*82) }
 };
 
 function verify(answer){
@@ -23,9 +34,14 @@ function verify(answer){
 	}
 }
 
-function reset(){
-	op1.innerHTML = Math.floor(Math.random()*10);
-	op2.innerHTML = Math.floor(Math.random()*10);
+function reset(symbol){
+	var operator1 = genOp[symbol]();
+	var operator2 = genOp[symbol]();
+
+	opType.innerHTML = symbol;
+	op1.innerHTML = operator1;
+	op2.innerHTML = operator2;
+	
 	var options = [];
 
 	for(i=0; i<4; i++){
@@ -34,14 +50,14 @@ function reset(){
 
 	replay.className = 'hidden';
 
-	var rightAnswer = parseInt(op1.innerHTML) + parseInt(op2.innerHTML);
+	var correctAnswer = operations[symbol](operator1, operator2);
 
-	options.push(rightAnswer);
+	options.push(correctAnswer);
 
 	for(i=0; i<3; i++){
-		var genNum = Math.floor(Math.random()*21);
+		var genNum = genOption[symbol]();
 		while(options.includes(genNum)){
-			genNum = Math.floor(Math.random()*21);
+			genNum = genOption[symbol]();
 		}
 		options.push(genNum);
 	}
@@ -60,5 +76,5 @@ for(i=0; i<option.length; i++){
 }
 
 replay.addEventListener("click", function(){
-	reset();
+	reset(opType.innerHTML);
 });
