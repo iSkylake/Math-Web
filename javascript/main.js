@@ -5,6 +5,7 @@ var option = document.getElementsByClassName('option');
 var replay = document.getElementById('replay');
 var menuItem = document.getElementsByTagName('li');
 
+// Menubar highlight
 for(i=0; i<menuItem.length; i++){
 	menuItem[i].addEventListener('click', function(){
 		for(j=0; j<menuItem.length; j++){
@@ -116,3 +117,5 @@ for(i=0; i<option.length; i++){
 replay.addEventListener("click", function(){
 	reset(opType.innerHTML);
 });
+
+reset('+');

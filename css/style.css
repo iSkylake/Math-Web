@@ -98,6 +98,12 @@ nav div ul li:hover{
 	height: 170px;
 }
 
+.option:hover, #replay:hover{
+	border-color: #000;
+	color: #000;
+	background-color: #ff28b9
+}
+
 #replay{
 	border: 5px solid #ff28b9;
 	border-radius: 10px;
