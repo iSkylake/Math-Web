@@ -3,6 +3,16 @@ var op2 = document.getElementById('op2');
 var opType = document.getElementById('op-type');
 var option = document.getElementsByClassName('option');
 var replay = document.getElementById('replay');
+var menuItem = document.getElementsByTagName('li');
+
+for(i=0; i<menuItem.length; i++){
+	menuItem[i].addEventListener('click', function(){
+		for(j=0; j<menuItem.length; j++){
+			menuItem[j].classList.remove('active');
+		}
+		this.classList.add('active');
+	});
+};
 
 // Hash for all operations
 var operations = {
