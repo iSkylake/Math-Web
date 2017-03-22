@@ -25,7 +25,8 @@ var operations = {
 
 // Hash to generate operators
 var genOp = {
-	'+X': function(){ return Math.floor(Math.random()*10) },
+	'+': function(){ return Math.floor(Math.random()*50) },
+	'X': function(){ return Math.floor(Math.random()*10) },
 	'-': function(){ var arr = []; arr[0] = Math.floor(Math.random()*98)+1; arr[1] = Math.floor(Math.random()*arr[0]); return arr },
 	// '/': function(){ var arr = []; arr[0] = Math.floor(Math.random()*98)+1; arr[1] = Math.floor(Math.random()*arr[0]); while(arr[0] % arr[1] !== 0){ arr[1] = Math.floor(Math.random()*arr[0]); } return arr }
 	'/': function(){ var arr = []; arr[0] = Math.floor(Math.random()*9+1); arr[1] = arr[0]*Math.floor(Math.random()*10); return arr; }
@@ -33,7 +34,7 @@ var genOp = {
 
 // Hash to generate selections / options
 var genOption = {
-	'+': function(){ return Math.floor(Math.random()*21) },
+	'+': function(){ return Math.floor(Math.random()*99) },
 	'X': function(){ return Math.floor(Math.random()*82) },
 	'-': function(){ return Math.floor(Math.random()*100)},
 	'/': function(){ return Math.floor(Math.random()*10)}
@@ -60,16 +61,15 @@ function reset(symbol){
 
 	var operator1, operator2;
 
-	if(symbol === '+' || symbol === 'X'){
-		operator1 = genOp['+X']();
-		operator2 = genOp['+X']();		
+	if(symbol === '+' || symbol == 'X'){
+		operator1 = genOp[symbol]();
+		operator2 = genOp[symbol]();		
 	} else if(symbol === '-'){
 		var arr = genOp['-']();
 		operator1 = arr[0];
 		operator2 = arr[1];
 	} else{
 		var arr = genOp['/']();
-		console.log(arr);
 		operator1 = arr[1];
 		operator2 = arr[0];		
 	}
